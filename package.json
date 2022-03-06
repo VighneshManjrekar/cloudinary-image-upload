@@ -1,13 +1,13 @@
 {
-  "name": "main",
+  "name": "cloudinary-mongo-image-upload",
   "version": "1.0.0",
-  "description": "",
+  "description": "API for uploading images to cloudinary and then storing urls in mongodb",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Vighnesh Manjrekar",
   "license": "ISC",
   "dependencies": {
     "cloudinary": "^1.28.1",
