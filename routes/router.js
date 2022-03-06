@@ -1,5 +1,5 @@
 const routes = require('express').Router()
-const controller = require('../controllers/main')
+const controller = require('../controller/main')
 
 routes.get('/',controller.getRoot)
 

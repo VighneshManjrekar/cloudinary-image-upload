@@ -1,5 +1,5 @@
 const path = require('path')
-const cloudinary = require('cloudinary')
+const cloudinary = require('cloudinary').v2
 const formidable = require('formidable')
 const Image = require('../model/image')
 
@@ -12,9 +12,10 @@ exports.postImage = (req, res) => {
     form.parse(req, async (err, fields, files) => {
         if (err) {
             console.log(err)
-            return res.json('Form error')
+            return res.status(500).json('Form error')
         }
         try {
+            // in folder path we can set folder name
             const imageData = await cloudinary.uploader.upload(files.file.filepath, { folder: 'apiImages' })
             const image = new Image({
                 asset_id: imageData.asset_id,
@@ -28,11 +29,10 @@ exports.postImage = (req, res) => {
 
             })
             await image.save()
-            console.log(JSON.stringify(imageData))
-            return res.json(imageData)
+            return res.status(200).json(imageData)
         } catch (err) {
             console.log(err)
-            return res.json('upload error')
+            return res.status(500).json('upload error')
         }
     })
 }
