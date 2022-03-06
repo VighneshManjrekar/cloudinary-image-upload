@@ -3,6 +3,8 @@ const express = require('express')
 const mongoose = require('mongoose')
 
 const app = express()
+const routes = require('./routes/router')
+app.use(routes)
 
 mongoose
     .connect(process.env.MONGO_URI)
